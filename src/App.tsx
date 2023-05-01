@@ -1,25 +1,22 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { validationSchema } from './utils/validationSchema';
+import {
+  validationSchema,
+  ValidationSchemaType,
+} from './utils/validationSchema';
 import './App.css';
-
-interface LoginForm {
-  name: string;
-  email: string;
-  password: string;
-}
 
 function App() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginForm>({
+  } = useForm<ValidationSchemaType>({
     mode: 'onChange',
     resolver: zodResolver(validationSchema),
   });
 
-  const onSubmit = (data: LoginForm) => {
+  const onSubmit = (data: ValidationSchemaType) => {
     console.log(data);
   };
 

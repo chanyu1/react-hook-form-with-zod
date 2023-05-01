@@ -11,3 +11,5 @@ export const validationSchema = z.object({
     .nonempty('Password is required')
     .min(6, 'Enter at least 6 characters'),
 });
+
+export type ValidationSchemaType = z.infer<typeof validationSchema>;
